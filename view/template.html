@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% block head %} {% endblock head %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ locate }}/MyFridgeFood/assets/css/style.css">
+    <link rel="stylesheet" href="{{ locate }}/MyFridgeFood/assets/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ locate }}/MyFridgeFood/assets/css/materialize-stepper.min.css">
+    <link rel="stylesheet" href="{{ locate }}/MyFridgeFood/assets/font-awesome/css/font-awesome.min.css">
+    <title></title>
+</head>
+
+<body class="grey lighten-3">
+
+<div class="row logo">
+    <div class="col s12 center-align logos">
+        <p class="testes"><img src="{{ locate }}/MyFridgeFood/assets/img/frog.svg" alt="logo" height="50" width="100"><span>CALORYSDAYS</span></p>
+    </div>
+
+</div>
+{% block landing %}
+{% endblock %}
+<nav>
+    <div class="nav-wrapper yellow accent-1">
+        <ul id="nav-mobil" class="left">
+            {% if session.result == true %}
+            <li><a href="#" data-activates="slide-out" class="collapse waves-effect"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+            {% endif %}
+            <li><a href="{{locate}}/MyFridgeFood/home" class="waves-effect"><i class="fa fa-home" aria-hidden="true"></i><span class="hide-on-med-and-down"> Accueil</span></a></li>
+        </ul>
+        {% if session.result != true %}
+        <ul id="nav-mobile" class="right">
+            <li><a href="#inscription" class="waves-effect modal-trigger"><i class="fa fa-sign-in" aria-hidden="true"></i> <span class="hide-on-med-and-down">Inscription</span></a></li>
+            <li><a href="#connexion" class="waves-effect modal-trigger"><i class="fa fa-user" aria-hidden="true"></i> <span class="hide-on-med-and-down">Connexion</span></a></li>
+        </ul>
+    </div>
+</nav>
+<div id="connexion" class="modal">
+    <div class="modal-content">
+        <h4>Connexion</h4>
+        <p>
+        <form method="post" action="{{ locate }}/MyFridgeFood/connexion">
+            <input type="text" placeholder="Email" name="mail">
+            <input type="password" placeholder="mot de passe" name="mdp">
+            <input type="submit" class="btn">
+        </form>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+    </div>
+</div>
+
+<div id="inscription" class="modal">
+    <div class="modal-content">
+        <div class="section grey lighten-5">
+            <h3 class="light center-align blue-text">Inscription</h3>
+            <form id="register" method="post" action="{{ locate }}/MyFridgeFood/register">
+                <ul class="stepper horizontal">
+
+                    <li class="step active">
+                        <div class="step-title waves-effect waves-dark">Nom et Prénom</div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="nom" name="nom" type="text" class="validate" required>
+                                    <label for="nom">Votre nom</label>
+                                </div>
+                                <div class="input-field col s6">
+                                        <input id="prenom" name="prenom" type="text" class="validate" required>
+                                        <label for="prenom">Votre prénom</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                            <input id="pseudo" name="pseudo" type="text" class="validate" required>
+                                            <label for="pseudo">Votre pseudo</label>
+                                        </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="waves-effect waves-dark btn next-step">Continue</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-title waves-effect waves-dark">Email</div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="email" name="email" type="email" class="validate" required>
+                                    <label for="email">Votre email</label>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button class="waves-effect waves-dark btn next-step">Continue</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-title waves-effect waves-dark">Mot de passe</div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="mdp" name="mdp" type="password" class="validate" required>
+                                    <label for="mdp">Votre mot de passe</label>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <button type="submit" class="waves-effect waves-dark btn">Envoyer</button>
+                                <button class="waves-effect waves-dark btn-flat previous-step">BACK</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+    </div>
+</div>
+{% else %}
+<ul id="nav-mobile" class="right">
+    <li><a href="#profil" class="waves-effect modal-trigger"><i class="fa fa-user" aria-hidden="true"></i> <span class="hide-on-med-and-down">Profil</span></a></li>
+    <li><a href="deconnexion" class="waves-effect modal-trigger"><i class="fa fa-sign-in" aria-hidden="true"></i> <span class="hide-on-med-and-down">Déconnexion</span></a></li>
+</ul>
+</div>
+</nav>
+
+<div id="profil" class="modal">
+    <div class="modal-content">
+        <h4>Profil</h4>
+        <img src="" alt="">
+        <p>Nom: {{ session.nom }}</p>
+        <p>Prenom: {{ session.prenom }}</p>
+        <p>Age : {{ session.age }} ans</p>
+        <p>Email : {{ session.mail }}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+    </div>
+</div>
+<div id="connexion" class="modal">
+    <div class="modal-content">
+        <h4>Connexion</h4>
+        <p>
+        <form method="post" action="home">
+            <input type="text" placeholder="Email" name="mail">
+            <input type="password" placeholder="mot de passe" name="mdp">
+            <input type="submit" class="btn">
+        </form>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+    </div>
+</div>
+{% endif %}
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+            <div class="background grey darken-1">
+
+            </div>
+            <a href="#!user"><img class="circle" src="{{ locate }}/MyFridgeFood/assets/img/i2.png"></a>
+            <a href="#!name"><span class="white-text name"> {{ session.nom }} {{session.prenom}}</span></a>
+            <a href="#!email"><span class="white-text email">{{session.mail}}</span></a>
+        </div>
+    </li>
+    <li><a class="subheader" href="#!"><i class="material-icons">build</i>Modifier compte</a></li>
+    <li><a href="#!"><i class="material-icons">add</i>Ajouter recette</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader"><i class="material-icons">comment</i> Ajouter article</a></li>
+    <li><a class="subheader" href="#!"><i class="material-icons">link</i> Contribuer</a></li>
+</ul>
+
+{% block content %} {% endblock content %}
+
+
+<footer>
+        <div class="col s12 center-align grey lighten-2">
+            <a href="#" class="brand-logo center "><img src="{{ locate }}/MyFridgeFood/assets/img/romain.png" alt="" width="60" height="60" class="responsive-img"><img src="{{ locate }}/MyFridgeFood/assets/img/kevin.png" alt="" width="60" height="60" class="responsive-img"><img src="{{ locate }}/MyFridgeFood/assets/img/sandrine.png"
+                    alt="" width="60" height="60" class="responsive-img"></a>
+
+        </div>
+    </footer>
+
+<script src="{{locate}}/MyFridgeFood/assets/js/jquery.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/materialize.min.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/jquery.validate.min.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/materialize-stepper.min.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/d3.min.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/d3pie.min.js"></script>
+<script src="{{locate}}/MyFridgeFood/assets/js/app.js"></script>
+{% block footer %} {% endblock footer %}
+</body>
+
+</html>

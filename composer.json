@@ -1,0 +1,22 @@
+{
+    "name": "KSR/my-fridge-food",
+    "description": "Site de cuisine",
+    "authors": [
+        {
+            "name": "Kalivins",
+            "email": "kevillard@hotmail.fr"
+        },
+        {
+            "name": "Sandrine",
+            "email": ""
+        },
+        {
+            "name": "Neoxichaos",
+            "email": ""
+        }
+    ],
+    "require": {
+        "altorouter/altorouter": "^1.2",
+        "twig/twig": "^2.0"
+    }
+}
